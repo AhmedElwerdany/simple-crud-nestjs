@@ -10,8 +10,8 @@ export class UsersService {
     return this.users
   }
 
-  getById(id : string): UsersDto {
-    const userIndex = this.users.findIndex(user => user.id === Number(id))
+  getById(id : number): UsersDto {
+    const userIndex = this.users.findIndex(user => user.id === id)
     if (userIndex > -1) {
       return this.users[userIndex]
     }else {
@@ -25,8 +25,8 @@ export class UsersService {
     return newUser
   }
 
-  deleteItem(id: string) {
-    const userIndex = this.users.findIndex(user => user.id === Number(id))
+  deleteItem(id: number) {
+    const userIndex = this.users.findIndex(user => user.id === id)
     if (userIndex > -1) {
       this.users.splice(userIndex,1)
     }else {

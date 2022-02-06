@@ -1,6 +1,6 @@
 import { UsersDto } from './users.dto';
 import { UsersService } from './users.service';
-import { Body, Controller, Delete, Get, Param, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post } from "@nestjs/common";
 
 
 @Controller('users')
@@ -12,7 +12,7 @@ export class UsersController {
     }
 
     @Get(':id')
-    getById(@Param('id') id : string) {
+    getById(@Param('id', ParseIntPipe) id : number) {
         return this.usersService.getById(id)
     }
 
@@ -22,7 +22,7 @@ export class UsersController {
     }
 
     @Delete(':id')
-    deleteUser(@Param('id') id: string){
+    deleteUser(@Param('id', ParseIntPipe) id: number){
         return this.usersService.deleteItem(id)
     }
 }
